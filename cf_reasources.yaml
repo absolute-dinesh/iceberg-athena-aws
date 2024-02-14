@@ -3,14 +3,14 @@ Description: AWS CloudFormation which creates the resources for the aws iceberg 
 ### 
 # Parameters for the cloudformation template
 Parameters:
-  S3PySparkBucketName:
+  RandomBucketName:
     Type: String
     Description: Bucket name for the aws tutorial
 Resources:
   S3BucketForData:
     Type: AWS::S3::Bucket
     Properties: 
-      BucketName: !Ref S3PySparkBucketName
+      BucketName: !Ref RandomBucketName
       Tags:
       - Key: identifier
         Value: awsicebergtutorial
@@ -37,7 +37,7 @@ Resources:
           State: ENABLED
           WorkGroupConfiguration:
             ResultConfiguration:
-              OutputLocation: !Sub s3://${S3PySparkBucketName}/athena_results   
+              OutputLocation: !Sub s3://${RandomBucketName}/athena_results   
 
 Outputs:
   S3Bucket:
